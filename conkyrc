@@ -116,10 +116,10 @@ ${execi 900 curl -so ~/.cache/covid/covid19_2021_by_map.js 'https://vnexpress.ne
 ${execi 900 curl -so ~/.cache/covid/covid19_2021_281.js 'https://vnexpress.net/microservice/sheet/type/covid19_2021_281'}
 ${execi 900 curl -so ~/.cache/covid/covid19_2021_by_day.js 'https://vnexpress.net/microservice/sheet/type/covid19_2021_by_day'}
 
-${font sans-serif:bold:size=10} ${image /home/phamquangloc/.cache/covid/img/virut.png -p 10,830 -s 60x60 } ${goto 85} COVID 19 - KHÁNH HÒA ${hr 2}
-${font sans-serif:bold:size=9} Tổng    :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --total } ${image /home/phamquangloc/.cache/covid/img/covid.png -p 280,890 -s 15x15 }
-${font sans-serif:bold:size=9} Hôm nay :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --day } ${image /home/phamquangloc/.cache/covid/img/covid.png -p 280,905 -s 15x15 }
-${font sans-serif:bold:size=9} Hôm Qua :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --yesterday } ${image /home/phamquangloc/.cache/covid/img/covid.png -p 280,920 -s 15x15 }
+${font sans-serif:bold:size=10} ${image ~/.cache/covid/img/virut.png -p 10,830 -s 60x60 } ${goto 85} COVID 19 - KHÁNH HÒA ${hr 2}
+${font sans-serif:bold:size=9} Tổng    :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --total } ${image ~/.cache/covid/img/covid.png -p 280,890 -s 15x15 }
+${font sans-serif:bold:size=9} Hôm nay :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --day } ${image ~/.cache/covid/img/covid.png -p 280,905 -s 15x15 }
+${font sans-serif:bold:size=9} Hôm Qua :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --yesterday } ${image ~/.cache/covid/img/covid.png -p 280,920 -s 15x15 }
 
 ${font sans-serif:bold:size=10}  COVID 19 - VIỆT NAM ${hr 2}
 ${font sans-serif:bold:size=9} Nhiễm ${goto 80}  : ${execi 600 python ~/.cache/covid/pycovid.py --vnall } $alignr Hôm nay  : ${execi 600 python ~/.cache/covid/pycovid.py --vntoday }
