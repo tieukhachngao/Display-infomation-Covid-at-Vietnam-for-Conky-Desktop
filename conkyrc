@@ -112,20 +112,21 @@ ${top name 8} $alignr ${top pid 8} ${top cpu 8}% ${top mem 8}%
 ${top name 9} $alignr ${top pid 9} ${top cpu 9}% ${top mem 9}%
 ${top name 10} $alignr ${top pid 10} ${top cpu 10}% ${top mem 10}%
 
+
 ${execi 900 curl -so ~/.cache/covid/covid19_2021_by_map.js 'https://vnexpress.net/microservice/sheet/type/covid19_2021_by_map'}
 ${execi 900 curl -so ~/.cache/covid/covid19_2021_281.js 'https://vnexpress.net/microservice/sheet/type/covid19_2021_281'}
 ${execi 900 curl -so ~/.cache/covid/covid19_2021_by_day.js 'https://vnexpress.net/microservice/sheet/type/covid19_2021_by_day'}
 
-${font sans-serif:bold:size=10} ${image ~/.cache/covid/img/virut.png -p 10,830 -s 60x60 } ${goto 85} COVID 19 - KHÁNH HÒA ${hr 2}
-${font sans-serif:bold:size=9} Tổng    :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --total } ${image ~/.cache/covid/img/covid.png -p 280,890 -s 15x15 }
-${font sans-serif:bold:size=9} Hôm nay :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --day } ${image ~/.cache/covid/img/covid.png -p 280,905 -s 15x15 }
-${font sans-serif:bold:size=9} Hôm Qua :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --yesterday } ${image ~/.cache/covid/img/covid.png -p 280,920 -s 15x15 }
+${font sans-serif:bold:size=10} ${image /home/phamquangloc/.cache/covid/img/virut.png -p 10,830 -s 60x60 } ${goto 85} COVID 19 - KHÁNH HÒA ${hr 2}
+${font sans-serif:bold:size=9} Tổng    :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --total } ${image /home/phamquangloc/.cache/covid/img/covid.png -p 280,890 -s 15x15 }
+${font sans-serif:bold:size=9} Hôm nay :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --day } ${image /home/phamquangloc/.cache/covid/img/covid.png -p 280,905 -s 15x15 }
+${font sans-serif:bold:size=9} Hôm qua :${goto 240} ${execi 600 python ~/.cache/covid/pycovid.py --yesterday } ${image /home/phamquangloc/.cache/covid/img/covid.png -p 280,920 -s 15x15 }
 
 ${font sans-serif:bold:size=10}  COVID 19 - VIỆT NAM ${hr 2}
-${font sans-serif:bold:size=9} Nhiễm ${goto 80}  : ${execi 600 python ~/.cache/covid/pycovid.py --vnall } $alignr Hôm nay  : ${execi 600 python ~/.cache/covid/pycovid.py --vntoday }
-${font sans-serif:bold:size=9} Khỏi  ${goto 80}  : ${execi 600 python ~/.cache/covid/pycovid.py --vnrecoveredall } $alignr Hôm nay  : ${execi 600 python ~/.cache/covid/pycovid.py --vnrecovered }
+${font sans-serif:bold:size=9} Nhiễm ${goto 80}  : ${execi 600 python ~/.cache/covid/pycovid.py --vnall } $alignr ${if_match "${execi 600 python ~/.cache/covid/pycovid.py --vntoday }"!="0"}Hôm nay :${execi 600 python ~/.cache/covid/pycovid.py --vntoday } ${else} Hôm qua :${execi 600 python ~/.cache/covid/pycovid.py --vnyesterday }  ${endif}
+${font sans-serif:bold:size=9} Khỏi  ${goto 80}  : ${execi 600 python ~/.cache/covid/pycovid.py --vnrecoveredall } $alignr ${if_match "${execi 600 python ~/.cache/covid/pycovid.py --vnrecovered}"!="0"} Hôm nay :${execi 600 python ~/.cache/covid/pycovid.py --vnrecovered} ${else} Hôm qua :${execi 600 python ~/.cache/covid/pycovid.py --vnrecoveredyesterday} ${endif}
 ${font sans-serif:bold:size=9} Tử vong ${goto 90} : ${execi 600 python ~/.cache/covid/pycovid.py --vndeaths }
-${font sans-serif:bold:size=9} Điều trị ${goto 90} : ${execi 600 python ~/.cache/covid/pycovid.py --vntreatmentall } $alignr Hôm nay :  ${execi 600 python ~/.cache/covid/pycovid.py --vntreatment }
+${font sans-serif:bold:size=9} Điều trị ${goto 90} : ${execi 600 python ~/.cache/covid/pycovid.py --vntreatmentall } $alignr ${if_match "${execi 600 python ~/.cache/covid/pycovid.py --vntreatment }"!="0"} Hôm nay :${execi 600 python ~/.cache/covid/pycovid.py --vndeaths} ${else} Hôm qua : ${execi 600 python ~/.cache/covid/pycovid.py --vntreatmentyesterday} ${endif}
 
 
 ]];
