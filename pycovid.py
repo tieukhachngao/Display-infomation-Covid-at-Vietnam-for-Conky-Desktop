@@ -29,7 +29,7 @@ def get_yesterday():
     df = pd.read_csv(data)
     yesterday = (date.today() -timedelta(days=1)).strftime("%-d") + '/' + (date.today() -timedelta(days=1)).strftime("%-m")
     df["Khánh Hòa"] = df["Khánh Hòa"].map('{:.0f}'.format)
-    df1= df.loc[df['Ngày'] == "15/7", ['Khánh Hòa']]
+    df1= df.loc[df['Ngày'] == yesterday, ['Khánh Hòa']]
     if df1.to_string(index=False,header=False) == "nan" :
         print(0)
     else:
